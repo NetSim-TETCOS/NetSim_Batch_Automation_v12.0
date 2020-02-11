@@ -11,7 +11,7 @@ result.append("File Location ---------------------------------> File Status \n")
 a=sys.argv[1]
 b=sys.argv[2]
 DIR=a
-OUTPUT_PATH='C:\\Users\\TETCOS-PC\\Desktop\\NetSim_Batch_Automation_v12.0-master\\NetSim_Batch_Automation_v12.0'
+OUTPUT_PATH='C:\\Users\\TETCOS-PC\\Desktop\\NetSim_Batch_Automation_v12.0'
 NETSIM_PATH='"'+ b + '"'
 TEMP_PATH=OUTPUT_PATH + "\\temp"
 os.chdir(DIR)
@@ -36,8 +36,9 @@ def filecheck(line):
         os.rename(original,overwrite)
         command = 'NetSim_Params.bat ' + NETSIM_PATH + ' ' + '"' + TEMP_PATH + '"'
         os.system(command)
-        open("Tetcostesting.txt","w+")
-        subprocess.check_call(["attrib","+H","Tetcostesting.txt"])
+        #open("Tetcostesting.txt","w+")
+        #subprocess.check_call(["attrib","+H","Tetcostesting.txt"])
+        os.remove("NetSim_Params.bat")
         files=os.listdir(TEMP_PATH)
         for f in files:
                 shutil.move(f,DIR_C)
